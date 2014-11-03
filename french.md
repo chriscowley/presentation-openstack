@@ -61,8 +61,10 @@ Note:
 
 ## Openstack Foundation
 ![Members](assets/platinumcontributors.png)
+
 Et beaucoup plus ... même Orange
-<p class="fragment">Et Moi
+
+<p class="fragment">Et Moi</p>
 
 ----
 
@@ -150,6 +152,9 @@ Note:
 - Pretty much everything hits Keystone
 - Token based
 - Being expanded to support OpenID/Oauth
+   - Allow you tenants to auth with their G+ account
+   - Authenticate your apps to Keystone?
+- Can be used outside Openstack (especially with the coming OpenID/Oauth support)
 
 
 ----
@@ -177,17 +182,17 @@ Decider quelle neud d'utiliser pour un instance
 
 Un instance est "stateless"
 
-Plugins pout plussier hypervisor:
+Plugins pour plussier hypervisor (ou pas)
 
+
+
+Note:
 - KVM/Libvirt
 - vSphere (pas ESX)
 - Xen/XenServer
 - LXC
 - Bare metal
 - Même Hyper-V
-
-Note:
-http://docs.openstack.org/juno/install-guide/install/yum/content/ch_nova.html
 
 ----
 
@@ -202,6 +207,7 @@ Plugins existes pour tout entre LVM et EMC VMAX
 Note:
 - The root FS for each instance exists on Ephermeral storage (by default)
 - Destroy instance = destroy data!
+- Also used outside Openstack
 
 ----
 
@@ -215,9 +221,13 @@ Utiliser par d'autre service (Glance par example)
 
 Aussi utiliser en direct
 
+Pas seulement un format du stockage, mais un "dialect" du stockage
+
 Note:
 - Object storage allows much greater resilience/scalablity than RAID/replication
 - not really geared to performance
+- Swift is not just the storage side, but also a API dialect.
+  - Ceph and Gluster both talk Swift (and Cinder too)
 
 ----
 
@@ -294,9 +304,62 @@ DBaaS (Database as a Service)
 
 SQL (MySQL) ou NoSQL (MongoDB)
 
+----
+
+## Oslo
+
+Les API partager
+
+Note:
+- VERY important
+- The glue that holds the whole collection together
+
 ---
 
-# Comment d'utiliser
+## Les nouvelles regles
+
+Rappelle: Openstack n'est pas un alternative a vSphere
+
+Note:
+- No HA
+- No vMotion
+- No failover
+
+----
+
+## Pense Fourmis, pas Chat
+
+![ants](assets/ants-cat.png)
+
+Note:
+- Kill some ants and the colony will continue
+- Contrary to popular belief, a cat does not have 9 lives
+
+----
+
+## Instances are stateless
+
+Les instances sont jetable
+
+Mettre tout les donnes dans Cinder/Swift
+
+<p class="fragment">![automate](http://i.imgur.com/3SJXbMb.jpg)</p>
+
+Note:
+Do your HA at an application level, not server
+
+----
+
+## Rappeler le "Chaos monkey"
+
+![Chaos Monkey](http://www.morphlabs.com/wp-content/uploads/2013/07/5701f0d6f41f17ced5b939461bd87e93_view.jpg)
+
+Note:
+- Netflix program that randomnly kills PRODUCTION instances
+
+---
+
+# Comment tester
 
 ----
 
