@@ -1,8 +1,9 @@
-# Openstack pour les nulls
+# Openstack pour les nuls
 
-## Un introduction a Openstack
+## Une introduction à Openstack
 
-Créer par [Chris Cowley](https://chriscowley.me.uk) / [@chriscowleyunix](http://twitter.com/chriscowleyunix)
+Créé par [Chris Cowley](https://chriscowley.me.uk) / [@chriscowleyunix](http://twitter.com/chriscowleyunix)
+Relecture par Sylvain Révéreault [@srevereault](http://twitter.com/srevereault)
 
 [![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)<br />
 
@@ -12,13 +13,13 @@ Note: What I will cover.
 ---
 
 ## Agenda
-						
+
 Qu'est que c'est?
-						
+
 Éléments
-						
-Chaque éléments fait quoi?
-						
+
+Chaque élément fait quoi?
+
 Comments utiliser?
 
 Types d'architecture
@@ -28,13 +29,14 @@ Types d'architecture
 
 ## Qu'est que c'est (pas)?
 
-Il n'est pas un hypervisor
+Ce n'est pas un hyperviseur
 
-Il n'est pas un platform de stockage						
+Ce n'est pas une platforme de stockage
 
-Il n'est pas un alternative a VMware					
+Ce n'est pas une alternative a VMware
+Note: (Sylvain) ça dépend de quoi on parle... ce n'est pas une alternative à ESX, mais ça peut être une alternative à la suite vCloud
 
-Il n'est même pas un seul projet.
+Ce n'est même pas un seul projet.
 
 Note:
 - The hypervisor is just one part of it
@@ -47,13 +49,13 @@ Note:
 
 ## Donc, qu'est que c'est?
 
-Un group des projets pour gerer les service cloud
+Un groupe de projets pour gérer des service cloud
 
-Supporter par le Openstack Foundation
+Supporté par la Openstack Foundation
 
-Aujourd'hui concentrer sur IaaS
+Aujourd'hui concentré sur IaaS
 
-Les elements de PaaS commence a venir
+Les éléments de PaaS commencent à venir
 
 Note:
 
@@ -75,7 +77,7 @@ Note:
 
 ---
 
-## Composant Openstack
+## Composants Openstack
 
 - Nova
 - Swift
@@ -102,7 +104,7 @@ Note:
 - Barbican
 - Designate
 - Manila
-- d'autre?
+- d'autres ?
 
 Note:
 - These are all slated for inclusion in the 2-3 releases.
@@ -122,13 +124,13 @@ Note:
 
 ----
 
-## Ce n'était pas tout
+## Ce n'est pas tout
 
-J'avais pas mis:
+Je n'ai pas mis:
 
 - Trove
 - Oslo
-- Toutes les projets en incubation
+- Tous les projets en incubation
 
 Note:
 
@@ -142,9 +144,9 @@ You thought it was complex before, when all that comes onboard there will be a l
 
 ## Keystone
 
-Indentification et autorisation
+Identification et autorisation
 
-Utiliser par touts les autres modules.
+Utilisé par tous les autres modules.
 
 ![keystone](assets/keystoneflowdiagram.svg)
 
@@ -161,11 +163,11 @@ Note:
 
 ## Glance
 
-Gerer les templates
+Gère les templates
 
-Accepter les requettes des utilisateurs pour les images et metadata
+Accepte les requettes des utilisateurs pour les images et metadata
 
-Templates stocker dans Swift/S3, FS ou HTTP
+Templates stockés dans Swift/S3, FS ou HTTP
 
 Note:
 - Oddly the first place you will see network problems
@@ -176,14 +178,14 @@ Note:
 
 ## Nova
 
-Gerer tout les instance (openstack-lish pour VM)
+Gère tout les instances (openstack-lish pour VM)
 
-Decider quelle neud d'utiliser pour un instance
+Decide quel neud utiliser pour un instance
 
-Un instance est "stateless"
+Une instance est "stateless"
 
-Plugins pour plussier hypervisor (ou pas)
-
+Plugins pour plusieurs hyperviseurs (ou pas)
+Note: (Sylvain) pourquoi "ou pas" ?
 
 
 Note:
@@ -198,11 +200,11 @@ Note:
 
 ## Cinder
 
-Provisionner du stockage persistant pour les instances
+Provisionne le stockage persistant pour les instances
 
-On peut utiliser pour /, mais c'est pas le default
+On peut l'utiliser pour /, mais ce n'est pas le comportement par défaut
 
-Plugins existes pour tout entre LVM et EMC VMAX
+Plugins existent pour tout entre LVM et EMC VMAX
 
 Note:
 - The root FS for each instance exists on Ephermeral storage (by default)
@@ -217,11 +219,11 @@ Stockage Objet
 
 ![swift](assets/swift_install_arch.png)
 
-Utiliser par d'autre service (Glance par example)
+Utilisé par d'autres services (Glance par exemple)
 
-Aussi utiliser en direct
+Aussi utilisé en direct
 
-Pas seulement un format du stockage, mais un "dialect" du stockage
+Pas seulement un format du stockage, mais un "dialecte" du stockage
 
 Note:
 - Object storage allows much greater resilience/scalablity than RAID/replication
@@ -237,11 +239,11 @@ Software Defined Networking (SDN)
 
 Mon preféré
 
-Les tennants peut gerer le propre reseau avec les FWs, LBs et VPNs
+Les "tenants" peuvent gérer leur propre réseau avec les FWs, LBs et VPNs
 
-Possiblité d'ajouter les IP externe pour les instance qui a besoin
+Possiblité d'ajouter les IP externes pour les instances qui en ont besoin
 
-Plugins pour Openvswitch, Cisco Nexus, VMware NSX, Brocade, BigSwitch, et d'autre
+Plugins pour Openvswitch, Cisco Nexus, VMware NSX, Brocade, BigSwitch, et d'autres
 
 Un plugin L2 modular
 
@@ -254,9 +256,9 @@ Note:
 
 ## Heat
 
-Orchestration basé sur les templates
+Orchestration basée sur les templates
 
-Avec une fichier on peut créer toute une infrastructure
+Avec un fichier on peut créer toute une infrastructure
 
 - Instances
 - Reseaux
@@ -270,13 +272,13 @@ Note:
 
 ## Horizon
 
-Interface web pour gere Openstack
+Interface web pour gérer Openstack
 
-Utiliser par l'admin et utilisateur
+Utilisé par l'admin et les utilisateurs
 
-Pas essential - les API sont des citoyens de première classe
+Pas essentiel - les APIs sont des "citoyens de première classe"
 
-Horizon utilise ces API
+Horizon utilise ces APIs
 
 Note:
 - Based on Django
@@ -288,9 +290,9 @@ Note:
 
 Collecte de metrics (physique ou virtuelle)
 
-Stockage de cette info
+Stockage de ces infos
 
-Principlement pour la facturation des tenants.
+Principalement pour la facturation des tenants.
 
 Note:
 - Like Heat, not a module I have really used much
@@ -308,7 +310,7 @@ SQL (MySQL) ou NoSQL (MongoDB)
 
 ## Oslo
 
-Les API partager
+Les API partagées
 
 Note:
 - VERY important
@@ -316,13 +318,13 @@ Note:
 
 ---
 
-## Les nouvelles regles
+## Les nouvelles règles
 
-Rappelle: Openstack n'est pas un alternative a vSphere
+Rappel : Openstack n'est pas un alternative a vSphere
 
 Note:
-- No HA
-- No vMotion
+- No HA (Sylvain : dépend de la façon dont c'est déployé)
+- No vMotion (pas d'accord : tu as des mécanimses de Live Migration)
 - No failover
 
 ----
@@ -339,9 +341,9 @@ Note:
 
 ## Instances are stateless
 
-Les instances sont jetable
+Les instances sont jetables
 
-Mettre tout les donnes dans Cinder/Swift
+Mettre tout les données dans Cinder/Swift
 
 <p class="fragment">![automate](http://i.imgur.com/3SJXbMb.jpg)</p>
 
@@ -379,11 +381,11 @@ http://trystack.org
 
 <img src="assets/rdo-logo.png" height=100px /><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTjHafE6jlIyrwPkpJiWkfEE_5APfAG4W4yHnZOiP2H_TUTPzma" height=100px/>
 
-Un projet Redat pour creer les lab et PoC
+Un projet Redat pour créer les labs et PoCs
 
 http://openstack.redhat.com
 
-Limiter a RHEL, CentOS et Fedora
+Limité a RHEL, CentOS et Fedora
 
 ----
 
@@ -391,11 +393,11 @@ Limiter a RHEL, CentOS et Fedora
 
 <img src="https://forge.puppetlabs.com/assets/4f80572/images/forge-logo.png" height=100px />
 
-Sur le Forge, il y a des modules pour installer/gerer Openstack
+Sur la Forge, il y a des modules pour installer/gérer Openstack
 
 Compatible avec RHEL/CentOS et Ubuntu LTS
 
-Utiliser par RDO
+Utilisé par RDO
 
 Plus souple de RDO
 
@@ -406,6 +408,8 @@ Plus souple de RDO
 Projet d'orchestration pour Ubuntu
 
 ![Juju-openstack](http://javacruft.files.wordpress.com/2012/02/running-openstack.jpg)
+
+Note: (Sylvain) il y a aussi DevStack (http://docs.openstack.org/developer/devstack/) qui fait maintenant officiellement partie d'OpenStack
 
 ---
 
@@ -438,10 +442,11 @@ This one scales nicely. Basic architecture can be used for much larger setups
 
 # Demo
 
-Ça va fini mal :-)
+Ça va finir mal :-)
 
 Note:
 - Use [Trystack](http://trystack.org/)
+- (Sylvain) si besoin, on peut mettre un DevStack sur une machine SII
 
 ---
 
