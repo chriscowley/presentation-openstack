@@ -2,8 +2,7 @@
 
 ## Une introduction à Openstack
 
-Créé par [Chris Cowley](https://chriscowley.me.uk) / [@chriscowleyunix](http://twitter.com/chriscowleyunix)
-Relecture par Sylvain Révéreault [@srevereault](http://twitter.com/srevereault)
+Créé par [Chris Cowley](https://chriscowley.me.uk) / [@chriscowleyunix](http://twitter.com/chriscowleyunix) et Sylvain Révéreault [@srevereault](http://twitter.com/srevereault)
 
 [![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)<br />
 
@@ -33,10 +32,10 @@ Ce n'est pas un hyperviseur
 
 Ce n'est pas une platforme de stockage
 
-Ce n'est pas une alternative a VMware
-Note: (Sylvain) ça dépend de quoi on parle... ce n'est pas une alternative à ESX, mais ça peut être une alternative à la suite vCloud
+Ce n'est pas une alternative a VMware ESX ou vSphere (equivalent a vCloud Director)
 
 Ce n'est même pas un seul projet.
+
 
 Note:
 - The hypervisor is just one part of it
@@ -72,6 +71,7 @@ Et beaucoup plus ... même Orange
 
 ## IaaS/PaaS?
 ![IaaSvsPaaS](assets/IaaSvsPaaS.svg)
+
 
 Note:
 
@@ -150,6 +150,7 @@ Utilisé par tous les autres modules.
 
 ![keystone](assets/keystoneflowdiagram.svg)
 
+
 Note:
 - Pretty much everything hits Keystone
 - Token based
@@ -169,6 +170,7 @@ Accepte les requettes des utilisateurs pour les images et metadata
 
 Templates stockés dans Swift/S3, FS ou HTTP
 
+
 Note:
 - Oddly the first place you will see network problems
 - Huge library already exists (Linux and Windows)
@@ -184,8 +186,7 @@ Decide quel neud utiliser pour un instance
 
 Une instance est "stateless"
 
-Plugins pour plusieurs hyperviseurs (ou pas)
-Note: (Sylvain) pourquoi "ou pas" ?
+Plugins pour plusieurs hyperviseurs (ou pas) - on peut utiliser LXC ou meme "bare-metal"
 
 
 Note:
